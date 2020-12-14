@@ -11,14 +11,14 @@ import br.com.alura.technews.R
 import br.com.alura.technews.database.AppDatabase
 import br.com.alura.technews.model.Noticia
 import br.com.alura.technews.repository.NoticiaRepository
+import br.com.alura.technews.ui.activity.MENSAGEM_FALHA_CARREGAR_NOTICIAS
 import br.com.alura.technews.ui.activity.NOTICIA_ID_CHAVE
+import br.com.alura.technews.ui.activity.TITULO_APPBAR
 import br.com.alura.technews.ui.activity.visualizanoticias.VisualizaNoticiaActivity
 import br.com.alura.technews.ui.activity.extensions.mostraErro
 import br.com.alura.technews.ui.activity.formularionoticias.FormularioNoticiaActivity
 import kotlinx.android.synthetic.main.activity_lista_noticias.*
 
-private const val TITULO_APPBAR = "Notícias"
-private const val MENSAGEM_FALHA_CARREGAR_NOTICIAS = "Não foi possível carregar as novas notícias"
 
 class ListaNoticiasActivity : AppCompatActivity() {
 

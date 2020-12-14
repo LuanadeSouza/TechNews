@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import br.com.alura.technews.database.dao.NoticiaDAO
 import br.com.alura.technews.model.Noticia
+import br.com.alura.technews.ui.activity.NOME_BANCO_DE_DADOS
 
-private const val NOME_BANCO_DE_DADOS = "news.db"
 
 @Database(entities = [Noticia::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
