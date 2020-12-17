@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        android:name=".AppApplication">
         <activity android:name=".ui.activity.formularionoticias.FormularioNoticiaActivity" />
         <activity android:name=".ui.activity.visualizanoticias.VisualizaNoticiaActivity" />
         <activity android:name=".ui.activity.listanoticias.ListaNoticiasActivity">

@@ -6,11 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import br.com.alura.technews.R
-import br.com.alura.technews.database.AppDatabase
 import br.com.alura.technews.model.Noticia
-import br.com.alura.technews.repository.NoticiaRepository
 import br.com.alura.technews.ui.activity.MENSAGEM_FALHA_REMOCAO
 import br.com.alura.technews.ui.activity.NOTICIA_ID_CHAVE
 import br.com.alura.technews.ui.activity.NOTICIA_NAO_ENCONTRADA
@@ -18,17 +15,15 @@ import br.com.alura.technews.ui.activity.TITULO_APPBAR
 import br.com.alura.technews.ui.activity.extensions.mostraErro
 import br.com.alura.technews.ui.activity.formularionoticias.FormularioNoticiaActivity
 import kotlinx.android.synthetic.main.activity_visualiza_noticia.*
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class VisualizaNoticiaActivity : AppCompatActivity() {
 
     private val noticiaId: Long by lazy {
         intent.getLongExtra(NOTICIA_ID_CHAVE, 0)
     }
-    private val viewModel by lazy {
-        val repository = NoticiaRepository(AppDatabase.getInstance(this).noticiaDAO)
-        val factory = VisualizaNoticiaViewModelFactory(noticiaId, repository)
-        ViewModelProviders.of(this, factory).get(VisualizaNoticiaViewModel::class.java)
-    }
+    private val viewModel: VisualizaNoticiaViewModel by viewModel{ parametersOf(noticiaId)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +38,7 @@ class VisualizaNoticiaActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             R.id.visualiza_noticia_menu_edita -> abreFormularioEdicao()
             R.id.visualiza_noticia_menu_remove -> remove()
